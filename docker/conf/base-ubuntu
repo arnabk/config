@@ -1,0 +1,13 @@
+FROM ubuntu:latest
+
+# Replace shell with bash so we can source files
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
+# Set debconf to run non-interactively
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
+RUN apt-get update
+RUN apt-get install apt-utils -y
+RUN apt upgrade --fix-missing -y
+
+RUN apt install apt-transport-https build-essential git python curl screen nmap wget -y

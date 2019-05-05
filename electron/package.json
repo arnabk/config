@@ -1,0 +1,187 @@
+{
+  "name": "hmms_reactjs",
+  "version": "1.0.0",
+  "description": "HMMS in reactJS",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test nyc --all mocha --recursive src/**/__tests__/**",
+    "test:watch": "npm jest -- --watch",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "watch-web": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js --progress --colors --watch -d --devtool source-map --config ./web.webpack.dev.js",
+    "build-web": "webpack --progress --colors -p --config ./web.webpack.prod.js",
+    "sloc": "sloc src",
+    "watch-cd": "webpack --progress --colors --watch -d --devtool source-map --config ./cd.webpack.dev.js",
+    "build-cd": "webpack --progress --colors -p --config ./cd.webpack.prod.js",
+    "update-pkg-version": "ncu -u -x react-tabs"
+  },
+  "engines": {
+    "node": "~v9.0.0"
+  },
+  "author": {
+    "name": "Arnab Karmakar",
+    "email": "akarmakar@spherasolutions.com"
+  },
+  "contributors": [
+    {
+      "name": "Delhibabu Vengam Bhanumoorthy",
+      "email": "DVengamBhanumoorthy@spherasolutions.com"
+    }
+  ],
+  "license": "ISC",
+  "repository": "http://sp-tfs-app-1.devapps.spherasolutions.com:8080/tfs",
+  "dependencies": {
+    "animate.css": "^3.5.2",
+    "async": "^2.6.0",
+    "babel-jest": "^21.2.0",
+    "blob-stream": "^0.1.3",
+    "bourbon": "^4.2.7",
+    "bowser": "^1.6.1",
+    "classnames": "^2.2.5",
+    "core-decorators": "^0.20.0",
+    "fbemitter": "^2.1.1",
+    "file-saver": "^1.3.2",
+    "fs": "0.0.1-security",
+    "html2canvas": "^0.5.0-beta4",
+    "icheck": "^1.0.2",
+    "immutable": "^3.8.2",
+    "ipc": "^0.0.1",
+    "jest": "^21.2.1",
+    "js-cookie": "^2.2.0",
+    "jspdf": "^1.3.0",
+    "jspdf-autotable": "^2.2.2",
+    "localforage": "^1.5.3",
+    "lodash": "^4.16.2",
+    "lokijs": "^1.4.1",
+    "lowdb": "^1.0.0",
+    "memoizee": "^0.4.1",
+    "moment": "^2.19.2",
+    "moment-duration-format": "^1.3.0",
+    "moment-timezone": "^0.5.14",
+    "object-hash": "^1.1.5",
+    "paralleljs": "^0.2.1",
+    "pdfjs-dist": "^2.0.108",
+    "pdfmake": "^0.1.35",
+    "postcss-loader": "^2.0.8",
+    "prop-types": "^15.6.0",
+    "rc-dialog": "^7.0.0",
+    "rc-progress": "^2.2.4",
+    "react": "^16.2.0",
+    "react-addons-shallow-compare": "^15.4.0",
+    "react-addons-update": "^15.4.0",
+    "react-datepicker": "^1.1.0",
+    "react-dom": "^16.2.0",
+    "react-hotkeys": "^0.10.0",
+    "react-icheck": "^0.3.6",
+    "react-maskedinput": "^4.0.0",
+    "react-popper": "^0.7.4",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-select": "^1.0.0-rc.2",
+    "react-simple-flex-grid": "^1.1.0",
+    "react-split-pane": "^0.1.70",
+    "react-tabs": "^0.8.0",
+    "react-tether": "^0.6.0",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.16.0",
+    "revalidator": "^0.3.1",
+    "seq-queue": "0.0.5",
+    "whatwg-fetch": "^2.0.1",
+    "xlsx-style": "^0.8.13"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.6",
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^8.0.2",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-import-asserts": "^3.0.0",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-class-properties": "^6.19.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-regenerator": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-plugin-typecheck": "^3.9.0",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-runtime": "^6.11.6",
+    "caniuse-api": "^2.0.0",
+    "chai": "^4.1.1",
+    "clean-webpack-plugin": "^0.1.10",
+    "concurrently": "^3.2.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "coveralls": "^3.0.0",
+    "cross-env": "^5.1.1",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jest": "^21.3.2",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.0.1",
+    "file-loader": "^1.1.5",
+    "http-server": "^0.10.0",
+    "json-loader": "^0.5.4",
+    "less": "^2.7.1",
+    "mocha": "^4.0.1",
+    "node-sass": "^4.6.1",
+    "npm-check-updates": "^2.12.1",
+    "sass-loader": "^6.0.6",
+    "scss": "^0.2.4",
+    "sloc": "^0.2.0",
+    "source-map": "^0.6.1",
+    "strip-loader": "^0.1.2",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "vinyl-source-stream": "^1.1.0",
+    "webpack": "^3.8.1"
+  },
+  "babel": {
+    "plugins": [
+      "transform-runtime",
+      "typecheck",
+      "transform-class-properties",
+      "transform-decorators-legacy",
+      "add-module-exports",
+      "import-asserts",
+      "syntax-async-functions",
+      "transform-regenerator",
+      "transform-export-extensions"
+    ],
+    "presets": [
+      "es2015",
+      "stage-0",
+      "react"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
+  "nyc": {
+    "require": [
+      "babel-core/register",
+      "babel-polyfill",
+      "mocha"
+    ],
+    "include": [
+      "src/**"
+    ],
+    "exclude": [
+      "src/**/__tests__/*.js"
+    ],
+    "sourceMap": false,
+    "instrument": false,
+    "reporter": [
+      "html",
+      "text",
+      "text-lcov"
+    ]
+  }
+}

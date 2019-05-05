@@ -1,0 +1,17 @@
+FROM arnabkarmakar/base-ubuntu:latest
+
+ENV MY_HOME=/root
+ENV NVM_DIR $MY_HOME/.nvm
+ENV NODE_VERSION 10.15.3
+
+RUN mkdir $NVM_DIR
+RUN HOME=$MY_HOME curl https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash \
+  && source $NVM_DIR/nvm.sh \
+  && nvm install $NODE_VERSION \
+  && nvm alias default $NODE_VERSION \
+  && nvm use default
+
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+RUN npm i yarn -g

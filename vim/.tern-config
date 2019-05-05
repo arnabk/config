@@ -1,0 +1,18 @@
+{
+  "libs": [
+    "browser",
+    "react",
+    "chai",
+    "ecmascript"
+  ],
+  "ecmaVersion": 6,
+  "plugins": {
+      "doc_comment": null,
+      "es_modules": {},
+      "node": {}
+  },
+  "dontLoad": [
+      "node_modules/**"
+  ]
+}
+

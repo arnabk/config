@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "moduleResolution": "node",
+    "paths": {
+      "*": ["src/*"]
+    },
+    "experimentalDecorators": true
+  },
+  "exclude": [
+    "node_modules", "build", "public"
+  ],
+  "python.pythonPath": "/usr/local/bin/python3",
+  "code-runner.executorMap": {
+    "python": "python3 -u"
+  }
+}

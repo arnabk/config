@@ -1,0 +1,16 @@
+FROM arnabkarmakar/ubuntu-yarn
+
+ENV HOME /root
+
+VOLUME $HOME/.bcoin
+
+RUN git clone https://github.com/bcoin-org/bcoin
+RUN cd bcoin && npm install
+
+WORKDIR /root
+
+# Run the following command to create a image with name bcoin
+# docker build -f bcoin -t bcoin .
+
+# Run the following command to create a disposable container, which gets removed after exit
+# docker run -it -v bcoin:/root/.bcoin --rm bcoin
