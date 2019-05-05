@@ -1,6 +1,6 @@
 #  This script assumes that ssh-add ~/.ssh/id has been called running the following commands
 GITHUB_USER=arnabk
-AZURE_USER=arnabk
+AZURE_USER=v3/arnabk/Active/Path/To/Project
 
 REPOSITORY_NAME=$1
 
