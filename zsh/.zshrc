@@ -72,8 +72,6 @@ plugins=(
   brew
 )
 
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -102,6 +100,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+source $ZSH/oh-my-zsh.sh
+
 prompt_context() {}
 
 export NVM_DIR="$HOME/.nvm"
