@@ -1,0 +1,61 @@
+# base image
+FROM amazonlinux
+
+ENV NVM_DIR /root/.nvm
+ENV NODE_VERSION 13.12.0
+
+# update cache
+RUN yum update -y
+
+# install deps
+RUN yum install curl zsh git vim go wget zip unzip sudo expect tar procps iproute chromium-browser -y
+
+# zsh
+RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# aws cli
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip && ./aws/install && rm -f awscliv2.zip
+RUN ln /usr/local/bin/aws /usr/bin/aws
+
+# aws-iam-authenticator
+RUN curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.16.8/2020-04-16/bin/linux/amd64/aws-iam-authenticator  && chmod +x aws-iam-authenticator && mv aws-iam-authenticator /usr/bin/
+
+# kubefwd
+RUN wget https://github.com/txn2/kubefwd/releases/download/1.14.0/kubefwd_linux_amd64.tar.gz && tar xf kubefwd_linux_amd64.tar.gz && chmod +x kubefwd && mv kubefwd /usr/bin/ && rm -fR kubefwd_linux_amd64.tar.gz
+
+# kubectl
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl && chmod +x kubectl && mv kubectl /usr/bin/
+
+# stern
+RUN wget -O stern https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64 && chmod +x stern && mv stern /usr/bin/
+
+# nvm
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | /bin/zsh \
+  && chmod +x $NVM_DIR/nvm.sh \
+  && . $NVM_DIR/nvm.sh \
+  && nvm install $NODE_VERSION \
+  && nvm alias default $NODE_VERSION \
+  && nvm use default
+
+# Install remote VSCode server
+# RUN curl -fsSL https://code-server.dev/install.sh | /bin/zsh
+# COPY code-server/config.yaml /root/.config/code-server/config.yaml
+
+COPY commands/* /usr/bin/
+COPY .aws/ /root/.aws/
+COPY .kube/ /root/.kube/
+COPY .ssh/ /root/.ssh
+COPY .npmrc /root/
+
+WORKDIR /root
+VOLUME /root
+
+EXPOSE 3000 3001 3002 8080 22
+
+ENTRYPOINT [ "/bin/zsh" ]
+
+# docker ps -a --format "{{.ID}}"
+# eval `ssh-agent -s` && ssh-add ~/.ssh/id
+# .local/bin/code-server Workspaces/api
+# docker run -it --rm -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 8080:8080 -v c:\Workspaces:/root/Workspaces dev
