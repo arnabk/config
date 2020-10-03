@@ -1,17 +1,3 @@
-# Show all containers/images
-
-    docker ps -a
-    docker image ls
-
-# Remove container/image
-
-    docker rm 3e7a1ff1caa2
-    docker image rm 4892csdfs8974
-
-# Create a container from image and connect
-
-    docker run -it ubuntu
-
 # To build from image, "." is needed to specific context (current path). We can specify remote URL as context too
 
     docker build -f <fileName> . --label ubuntu
