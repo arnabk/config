@@ -32,29 +32,12 @@
     # Comma separated commands to run after start up
     ENTRYPOINT ["ls”]
 
-# mount /localfolder to the container's folder
-
-    docker run -p 80:80 -v /localfolder:/var/www/html hello-world
-
-# Stop / remove all Docker containers
-
-    docker stop $(docker ps -a -q)
-    docker rm $(docker ps -a -q)
-
 # Commit changes and creating a new image
 
     docker commit -m "commit message" <container-id> -a "Author name" <arnabkarmakar/my-image-name:latest> e.g, docker commit f5fd628644d6 ubuntu:latest
-
-# For installing an image
-    
-    docker pull ubuntu/trusty
 
 # -d means, run in background, -p dockerPort:hostPost
     
     docker run -d -p 6379:6379 my-name
     docker attach my-name
     docker run -d —name web1 -p 8081:80 tutom/hello-world
-
-# Create container and remove after exiting
-
-    docker run -it --rm bcoin
